@@ -5,8 +5,11 @@ Attendee Management JavaFX Application with Convention over Configuration, IoC a
 
 The application was built entirely with Scene Builder with maintainability as the highest goal.
 
+Requirements: JDK 1.8. Reason: pom.xml is easier, because JavaFX classes are on the classpath
+
 The application is used for maintaining the registrations of [Java EE Workshops](http://airhacks.com)
 and uses the following design principles:
+
 1. Convention Over Configuration: Presenters, Views, CSS and FXML files are named after a convention
 2. Dependency Injection: Backed services / Business Logic are injected for better testability / simplicity
 3. Generated Scene Builder code is encapsulated and separated from the business logic / presentation logic
