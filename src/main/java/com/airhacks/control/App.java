@@ -1,8 +1,7 @@
 package com.airhacks.control;
 
-import com.airhacks.control.business.registrations.boundary.RegistrationService;
+import com.airhacks.afterburner.injection.InjectionProvider;
 import com.airhacks.control.presentation.airhacks.AirhacksView;
-import com.airhacks.control.presentation.airhacks.InjectorProvider;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -26,8 +25,7 @@ public class App extends Application {
 
     @Override
     public void stop() throws Exception {
-        RegistrationService service = InjectorProvider.get().getInstance(RegistrationService.class);
-        service.close();
+        InjectionProvider.forgetAll();
     }
 
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
 package com.airhacks.control.presentation.attendeeinput;
 
-import com.airhacks.control.presentation.FXMLView;
+import com.airhacks.afterburner.views.FXMLView;
 
 /**
  *

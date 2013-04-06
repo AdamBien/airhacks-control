@@ -2,7 +2,7 @@ package com.airhacks.control.business.registrations.boundary;
 
 import com.airhacks.control.business.registrations.entity.Attendee;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -18,6 +18,7 @@ public class RegistrationService {
     private EntityManagerFactory emf;
     private EntityTransaction et;
 
+    @PostConstruct
     public void init() {
         this.emf = Persistence.createEntityManagerFactory("airhacks");
         this.em = this.emf.createEntityManager();
