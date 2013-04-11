@@ -25,7 +25,7 @@ import javafx.scene.control.TextField;
  * @author adam-bien.com
  */
 public class AttendeeInputPresenter implements Initializable {
-    
+
     @FXML
     Button saveButton;
     @FXML
@@ -56,25 +56,25 @@ public class AttendeeInputPresenter implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         BooleanProperty nameEntered = new SimpleBooleanProperty();
         nameEntered.bind(firstName.textProperty().isNotEmpty().or(lastName.textProperty().isNotEmpty()).or(company.textProperty().isNotEmpty()));
-        
+
         BooleanProperty dayChoosen = new SimpleBooleanProperty();
-        dayChoosen.bind(boot.selectedProperty().or(effect.selectedProperty()).or(architect.selectedProperty()));
-        
+        dayChoosen.bind(boot.selectedProperty().or(effect.selectedProperty()).or(architect.selectedProperty()).or(javaee.selectedProperty()));
+
         this.saveButton.disableProperty().bind(dayChoosen.and(nameEntered).not());
-        
+
         this.selectedAttendee = new SimpleObjectProperty<>();
         this.newAttendee = new SimpleObjectProperty<>();
-        
+
         this.selectedAttendee.addListener(new ChangeListener<Attendee>() {
             @Override
             public void changed(ObservableValue<? extends Attendee> observable, Attendee oldValue, Attendee newValue) {
                 if (newValue != null) {
-                    architect.setSelected(newValue.isArchitecture());
                     boot.setSelected(newValue.isBootstrap());
                     effect.setSelected(newValue.isEffective());
+                    architect.setSelected(newValue.isArchitecture());
                     ui.setSelected(newValue.isUi());
                     javaee.setSelected(newValue.isJavaee());
-                    
+
                     firstName.setText(newValue.getFirstName());
                     lastName.setText(newValue.getLastName());
                     company.setText(newValue.getCompany());
@@ -85,7 +85,7 @@ public class AttendeeInputPresenter implements Initializable {
             }
         });
     }
-    
+
     public void resetUI() {
         architect.setSelected(false);
         boot.setSelected(false);
@@ -93,18 +93,18 @@ public class AttendeeInputPresenter implements Initializable {
         ui.setSelected(false);
         javaee.setSelected(false);
         paid.setSelected(false);
-        
+
         resetTextField(firstName);
         resetTextField(lastName);
         resetTextField(company);
     }
-    
+
     void resetTextField(TextField tf) {
         tf.setText(tf.getPromptText());
     }
-    
+
     public void save() {
-        
+
         Attendee attendee = selectedAttendee.get();
         if (attendee == null) {
             attendee = new Attendee();
@@ -118,14 +118,14 @@ public class AttendeeInputPresenter implements Initializable {
         attendee.setEffective(effect.isSelected());
         attendee.setUi(ui.isSelected());
         attendee.setJavaee(javaee.isSelected());
-        
+
         this.newAttendee.set(attendee);
     }
-    
+
     public ObjectProperty<Attendee> selectedAttendeeProperty() {
         return selectedAttendee;
     }
-    
+
     public ObjectProperty<Attendee> newAttendeeProperty() {
         return newAttendee;
     }
