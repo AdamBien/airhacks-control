@@ -131,10 +131,6 @@ public class DayPresenter implements Initializable {
         return column;
     }
 
-    public ObservableList<Attendee> getAttendeesProperty() {
-        return attendees;
-    }
-
     public void add(Attendee newAttendee) {
         this.attendees.add(newAttendee);
     }
