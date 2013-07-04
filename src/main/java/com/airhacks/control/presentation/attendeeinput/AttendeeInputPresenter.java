@@ -55,7 +55,7 @@ public class AttendeeInputPresenter implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        this.saveButton.disableProperty().bind(getSaveButtonDisabledExpression());
+        this.saveButton.disableProperty().bind(getSaveButtonDisabledBinding());
 
         this.selectedAttendee = new SimpleObjectProperty<>();
         this.newAttendee = new SimpleObjectProperty<>();
@@ -125,12 +125,17 @@ public class AttendeeInputPresenter implements Initializable {
         return newAttendee;
     }
 
-    BooleanBinding getSaveButtonDisabledExpression() {
-        BooleanProperty nameEntered = new SimpleBooleanProperty();
-
-        nameEntered.bind(firstName.textProperty().isNotEmpty().or(lastName.textProperty().isNotEmpty()).or(company.textProperty().isNotEmpty()));
-        BooleanProperty dayChoosen = new SimpleBooleanProperty();
-        dayChoosen.bind(boot.selectedProperty().or(effect.selectedProperty()).or(architect.selectedProperty()).or(javaee.selectedProperty()));
+    BooleanBinding getSaveButtonDisabledBinding() {
+        BooleanBinding nameEntered = getNameEnteredBinding();
+        BooleanBinding dayChoosen = getDayChosenBinding();
         return dayChoosen.and(nameEntered).not();
+    }
+
+    BooleanBinding getNameEnteredBinding() {
+        return firstName.textProperty().isNotEmpty().or(lastName.textProperty().isNotEmpty()).or(company.textProperty().isNotEmpty());
+    }
+
+    BooleanBinding getDayChosenBinding() {
+        return boot.selectedProperty().or(effect.selectedProperty()).or(architect.selectedProperty()).or(javaee.selectedProperty());
     }
 }
