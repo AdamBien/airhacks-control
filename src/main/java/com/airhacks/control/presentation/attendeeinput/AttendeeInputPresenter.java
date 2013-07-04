@@ -7,6 +7,7 @@ package com.airhacks.control.presentation.attendeeinput;
 import com.airhacks.control.business.registrations.entity.Attendee;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -54,13 +55,7 @@ public class AttendeeInputPresenter implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        BooleanProperty nameEntered = new SimpleBooleanProperty();
-        nameEntered.bind(firstName.textProperty().isNotEmpty().or(lastName.textProperty().isNotEmpty()).or(company.textProperty().isNotEmpty()));
-
-        BooleanProperty dayChoosen = new SimpleBooleanProperty();
-        dayChoosen.bind(boot.selectedProperty().or(effect.selectedProperty()).or(architect.selectedProperty()).or(javaee.selectedProperty()));
-
-        this.saveButton.disableProperty().bind(dayChoosen.and(nameEntered).not());
+        this.saveButton.disableProperty().bind(getSaveButtonDisabledExpression());
 
         this.selectedAttendee = new SimpleObjectProperty<>();
         this.newAttendee = new SimpleObjectProperty<>();
@@ -128,5 +123,14 @@ public class AttendeeInputPresenter implements Initializable {
 
     public ObjectProperty<Attendee> newAttendeeProperty() {
         return newAttendee;
+    }
+
+    BooleanBinding getSaveButtonDisabledExpression() {
+        BooleanProperty nameEntered = new SimpleBooleanProperty();
+
+        nameEntered.bind(firstName.textProperty().isNotEmpty().or(lastName.textProperty().isNotEmpty()).or(company.textProperty().isNotEmpty()));
+        BooleanProperty dayChoosen = new SimpleBooleanProperty();
+        dayChoosen.bind(boot.selectedProperty().or(effect.selectedProperty()).or(architect.selectedProperty()).or(javaee.selectedProperty()));
+        return dayChoosen.and(nameEntered).not();
     }
 }
