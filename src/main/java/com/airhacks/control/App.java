@@ -1,6 +1,6 @@
 package com.airhacks.control;
 
-import com.airhacks.afterburner.injection.InjectionProvider;
+import com.airhacks.afterburner.injection.Injector;
 import com.airhacks.control.presentation.airhacks.AirhacksView;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -25,7 +25,7 @@ public class App extends Application {
 
     @Override
     public void stop() throws Exception {
-        InjectionProvider.forgetAll();
+        Injector.forgetAll();
     }
 
     public static void main(String[] args) {

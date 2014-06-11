@@ -1,6 +1,5 @@
 package com.airhacks.control.business.registrations.entity;
 
-import java.util.Objects;
 import java.util.UUID;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
