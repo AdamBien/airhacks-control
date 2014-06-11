@@ -2,33 +2,31 @@
 
 <?import java.lang.*?>
 <?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="243.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml" fx:controller="com.airhacks.control.presentation.attendeeinput.AttendeeInputPresenter">
-    <children>
-        <VBox id="VBox" fx:id="inputBox" alignment="CENTER" layoutX="100.0" layoutY="33.0" prefWidth="343.0" spacing="5.0">
-            <children>
-                <TextField fx:id="firstName" prefWidth="200.0" promptText="First Name" />
-                <TextField fx:id="lastName" prefWidth="200.0" promptText="Last Name" />
-                <TextField id="companyName" fx:id="company" prefWidth="200.0" promptText="Company" />
-            </children>
-        </VBox>
-        <Button fx:id="saveButton" defaultButton="true" disable="true" layoutX="98.0" layoutY="192.0" mnemonicParsing="false" onAction="#save" prefHeight="21.999908447265625" prefWidth="57.0" text="Save" />
-        <HBox id="HBox" alignment="CENTER" layoutX="100.0" layoutY="149.0" spacing="5.0">
-            <children>
-                <CheckBox fx:id="boot" mnemonicParsing="false" text="Bootstrap" />
-                <CheckBox fx:id="effect" mnemonicParsing="false" text="Effective" />
-                <CheckBox fx:id="architect" mnemonicParsing="false" text="Architecture" />
-                <CheckBox fx:id="ui" mnemonicParsing="false" text="UI" />
-                <CheckBox fx:id="javaee" mnemonicParsing="false" text="JavaEE" />
-            </children>
-        </HBox>
-        <CheckBox fx:id="paid" layoutX="100.0" layoutY="114.0" mnemonicParsing="false" prefWidth="103.0" text="Paid" />
-    </children>
-    <stylesheets>
-        <URL value="@attendeeinput.css" />
-    </stylesheets>
+<AnchorPane id="AnchorPane" prefHeight="243.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.airhacks.control.presentation.attendeeinput.AttendeeInputPresenter">
+  <children>
+    <VBox id="VBox" fx:id="inputBox" alignment="CENTER" layoutX="100.0" layoutY="14.0" prefHeight="92.0" prefWidth="342.0" spacing="5.0">
+      <children>
+        <TextField fx:id="firstName" prefWidth="200.0" promptText="First Name" />
+        <TextField fx:id="lastName" prefWidth="200.0" promptText="Last Name" />
+        <TextField id="companyName" fx:id="company" prefWidth="200.0" promptText="Company" />
+      </children>
+    </VBox>
+    <Button fx:id="saveButton" defaultButton="true" disable="true" layoutX="98.0" layoutY="192.0" mnemonicParsing="false" onAction="#save" prefHeight="21.999908447265625" prefWidth="57.0" text="Save" />
+    <HBox id="HBox" alignment="CENTER" layoutX="100.0" layoutY="149.0" spacing="5.0">
+      <children>
+        <CheckBox fx:id="boot" mnemonicParsing="false" text="Bootstrap" />
+        <CheckBox fx:id="effect" mnemonicParsing="false" text="Effective" />
+        <CheckBox fx:id="architect" mnemonicParsing="false" text="Architecture" />
+        <CheckBox fx:id="ui" mnemonicParsing="false" text="UI" />
+        <CheckBox fx:id="javaee" mnemonicParsing="false" text="Java EE" />
+      </children>
+    </HBox>
+    <CheckBox fx:id="paid" layoutX="100.0" layoutY="114.0" mnemonicParsing="false" prefWidth="103.0" text="Paid" />
+  </children>
+  <stylesheets>
+    <URL value="@attendeeinput.css" />
+  </stylesheets>
 </AnchorPane>
