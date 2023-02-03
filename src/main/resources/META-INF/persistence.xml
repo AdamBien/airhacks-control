@@ -5,8 +5,8 @@
         <class>com.airhacks.control.business.registrations.entity.Attendee</class>
         <properties>
             <property name="eclipselink.logging.level" value="FINE"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:derby:./airhacksDB;create=true"/>
-            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:derby:./airhacksDB;create=true"/>
+            <property name="jakarta.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
             <property name="eclipselink.ddl-generation" value="create-tables"/>
         </properties>
     </persistence-unit>
